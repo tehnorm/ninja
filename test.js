@@ -12,3 +12,14 @@ client.send(message, 0, message.length, "41234", "224.0.0.1", function(err, byte
 	console.log(bytes);
 client.close();
 });
+
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+process.stdin.on('data', function (chunk) {
+  process.stdout.write('data: ' + chunk);
+});
+
+process.stdin.on('end', function () {
+  process.stdout.write('end');
+});
